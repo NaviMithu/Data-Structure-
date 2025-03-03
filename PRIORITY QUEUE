@@ -1,0 +1,48 @@
+PRIORITY QUEUE
+QUESTION : 
+Sample test cases :
+Input 1 :
+5
+4 2
+3 1
+6 4
+2 3
+1 5
+Output 1 :
+Priority Queue: 3 4 2 6 1 
+Priority Queue: 4 2 6 1 
+CODE CPP :
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+struct Element{
+    int value;
+    int priority;
+};
+
+void prin(Element arr[],int n){
+        for(int i=n-1;i>=0;i--){
+            cout<<arr[i].value<<" ";
+        }
+        cout<<endl;
+}    
+int main(){
+int n;
+cin>>n;
+Element arr[n];
+for(int i=0;i<n;i++){
+    cin>>arr[i].value>>arr[i].priority;
+}
+for(int i=0;i<n-1;i++){
+    for(int j=i+1;j<n;j++){
+        if(arr[i].priority<arr[j].priority){
+            swap(arr[i],arr[j]);
+        }
+    }
+}
+cout<<"Priority Queue: ";
+prin(arr,n);
+cout<<"Priority Queue: ";
+prin(arr,n-1);
+}
